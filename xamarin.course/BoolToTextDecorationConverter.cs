@@ -4,9 +4,9 @@ using Xamarin.Forms;
 
 namespace xamarin.course
 {
-    public class BoolToColorConverter : IValueConverter
+    public class BoolToTextDecorationConverter : IValueConverter
     {
-        public BoolToColorConverter()
+        public BoolToTextDecorationConverter()
         {
         }
 
