@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ContentPage
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:local="clr-namespace:xamarin.course"
+    x:Class="xamarin.course.TodoView"
+    x:Name="ToDoViewPage"
+    Title="{Binding PageTitle}">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Add Item"
+                     Order="Primary"
+                     Priority="0"
+                     Command="{Binding AddItemCommand}"/>
+    </ContentPage.ToolbarItems>
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <local:BoolToColorConverter x:Key="BoolToColor" />
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <ContentPage.Content>
+        <ListView ItemsSource="{Binding Items}" SelectedItem="{Binding SelectedItem}">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                         <ViewCell.ContextActions>
+                             <MenuItem Text="Complete"
+                                       Command="{Binding Path=BindingContext.MarkAsCompletedCommand, Source={x:Reference ToDoViewPage}}"
+                                       CommandParameter="{Binding .}"/>
+                         </ViewCell.ContextActions>
+                        <StackLayout>
+                            <Label Text="{Binding Name}"
+                                   TextColor="{Binding Completed, Converter={StaticResource BoolToColor}}"/>
+                        </StackLayout>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+    </ContentPage.Content>
+</ContentPage>
