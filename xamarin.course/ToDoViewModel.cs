@@ -10,7 +10,9 @@ namespace xamarin.course
     {
         private ToDoItem _selectedItem;
         private string _completedHeader;
-        private double _completedProgress; 
+        private double _completedProgress;
+
+        public event EventHandler<double> UpdateProgressBar;
 
         public ToDoViewModel()
         {
@@ -63,8 +65,9 @@ namespace xamarin.course
 
         private void CalculateCompletedHeader()
         {
-            this.CompletedHeader = $"Completed {Items.Count(x => x.Completed )}/{Items.Count}";
+            this.CompletedHeader = $"Completed {Items.Count(x => x.Completed)}/{Items.Count}";
             this.CompletedProgress = (double)Items.Count(x => x.Completed) / (double)Items.Count;
+            this.UpdateProgressBar?.Invoke(this, this.CompletedProgress);
         }
 
         private void AddNewItem()

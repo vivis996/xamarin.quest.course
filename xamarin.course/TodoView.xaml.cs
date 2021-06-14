@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-
+﻿
 using Xamarin.Forms;
 
 namespace xamarin.course
@@ -10,7 +8,14 @@ namespace xamarin.course
         public TodoView()
         {
             InitializeComponent();
-            BindingContext = new ToDoViewModel();
+            var toDoViewModel = new ToDoViewModel();
+            BindingContext = toDoViewModel;
+            toDoViewModel.UpdateProgressBar += ToDoViewModel_UpdateProgressBar;
+        }
+
+        private async void ToDoViewModel_UpdateProgressBar(object sender, double e)
+        {
+            await progressBar.ProgressTo(e, 300, Easing.Linear);
         }
     }
 }
