@@ -8,7 +8,11 @@ namespace xamarin.course
         {
             InitializeComponent();
 
-            MainPage = new NavigationPage(new TodoView());
+            MainPage = new NavigationPage(new TodoView())
+            {
+                BarBackgroundColor = Color.White,
+                BarTextColor = Color.FromHex("#1b1091")
+            };
         }
 
         protected override void OnStart()

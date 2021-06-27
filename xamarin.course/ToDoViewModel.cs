@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.ObjectModel;
 using System.Linq;
+using System.Threading.Tasks;
 using System.Windows.Input;
 using Xamarin.Forms;
 
@@ -14,10 +15,13 @@ namespace xamarin.course
 
         public event EventHandler<double> UpdateProgressBar;
 
-        public ToDoViewModel()
+        private IDialogMessage _dialogMessage;
+
+        public ToDoViewModel(IDialogMessage dialogMessage)
         {
+            this._dialogMessage = dialogMessage;
             this.Items = new ObservableCollection<ToDoItem>(ToDoItem.GetToDoItems());
-            CalculateCompletedHeader();
+            this.CalculateCompletedHeader();
         }
 
         public string CompletedHeader
@@ -43,16 +47,19 @@ namespace xamarin.course
         public ObservableCollection<ToDoItem> Items { get; set; }
 
         public string PageTitle { get; set; }
+
         public ToDoItem SelectedItem
         {
-            get => _selectedItem; set
+            get => _selectedItem;
+            set
             {
                 _selectedItem = value;
                 PageTitle = value?.Name;
                 OnPropertyChanged("PageTitle");
             }
         }
-        public ICommand AddItemCommand => new Command(() => AddNewItem());
+        public ICommand AddItemCommand => new Command(async () => { await AddNewItem(); });
+
         public ICommand MarkAsCompletedCommand => new Command<ToDoItem>(MarkAsCompleted);
 
         private void MarkAsCompleted(ToDoItem obj)
@@ -70,10 +77,10 @@ namespace xamarin.course
             this.UpdateProgressBar?.Invoke(this, this.CompletedProgress);
         }
 
-        private void AddNewItem()
+        private async Task AddNewItem()
         {
-            Items.Add(new ToDoItem($"Todo Item {Items.Count + 1}"));
-            CalculateCompletedHeader();
+            string newItem = await _dialogMessage.DisplayPrompt("New Task", "Please enter a new task name");
+            Items.Add(new ToDoItem(newItem));
         }
     }
 }

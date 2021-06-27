@@ -1,16 +1,26 @@
-﻿
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using Xamarin.Forms;
 
 namespace xamarin.course
 {
-    public class ToDoItem
+    public class ToDoItem : BindableObject
     {
+        private bool completed;
         public string Name { get; set; }
-        public bool Completed { get; set; }
 
         public ToDoItem(string name)
         {
             this.Name = name;
+        }
+
+        public bool Completed
+        {
+            get => completed;
+            set
+            {
+                this.completed = value;
+                OnPropertyChanged();
+            }
         }
 
         public static IEnumerable<ToDoItem> GetToDoItems()
@@ -21,6 +31,7 @@ namespace xamarin.course
                 new ToDoItem("Have a dev meeting"),
                 new ToDoItem("Lunch time"),
                 new ToDoItem("Family time"),
+                new ToDoItem("Go to gym"),
             };
         }
     }
