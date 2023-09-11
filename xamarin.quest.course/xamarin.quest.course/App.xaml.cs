@@ -1,6 +1,6 @@
 ﻿using Xamarin.Forms;
 
-namespace xamarin.course
+namespace xamarin.quest.course
 {
     public partial class App : Application
     {
@@ -8,7 +8,7 @@ namespace xamarin.course
         {
             InitializeComponent();
 
-            MainPage = new NavigationPage(new TodoView());
+            MainPage = new MainPage();
         }
 
         protected override void OnStart()

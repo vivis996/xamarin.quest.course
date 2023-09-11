@@ -23,15 +23,15 @@
     <key>MinimumOSVersion</key>
     <string>8.0</string>
     <key>CFBundleDisplayName</key>
-    <string>xamarin.course</string>
+    <string>xamarin.quest.course</string>
     <key>CFBundleIdentifier</key>
-    <string>com.daniel.viveros.test-xamarin</string>
+    <string>com.daniel.viveros.xamarin-quest-course</string>
     <key>CFBundleVersion</key>
     <string>1.0</string>
     <key>UILaunchStoryboardName</key>
     <string>LaunchScreen</string>
     <key>CFBundleName</key>
-    <string>xamarin.course</string>
+    <string>xamarin.quest.course</string>
     <key>XSAppIconAssets</key>
     <string>Assets.xcassets/AppIcon.appiconset</string>
 </dict>

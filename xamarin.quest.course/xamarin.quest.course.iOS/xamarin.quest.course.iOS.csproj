@@ -5,13 +5,13 @@
     <Platform Condition=" '$(Platform)' == '' ">iPhoneSimulator</Platform>
     <ProductVersion>8.0.30703</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{5B95A5DA-820C-48A0-8237-E6C362800F9C}</ProjectGuid>
+    <ProjectGuid>{718DFECC-9FBF-416C-ACD0-BD19DC394F4A}</ProjectGuid>
     <ProjectTypeGuids>{FEACFBD2-3405-455C-9665-78FE426C6842};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <TemplateGuid>{6143fdea-f3c2-4a09-aafa-6e230626515e}</TemplateGuid>
     <OutputType>Exe</OutputType>
-    <RootNamespace>xamarin.course.iOS</RootNamespace>
+    <RootNamespace>xamarin.quest.course.iOS</RootNamespace>
     <IPhoneResourcePrefix>Resources</IPhoneResourcePrefix>
-    <AssemblyName>xamarin.course.iOS</AssemblyName>
+    <AssemblyName>xamarin.quest.course.iOS</AssemblyName>
     <MtouchEnableSGenConc>true</MtouchEnableSGenConc>
     <MtouchHttpClientHandler>NSUrlSessionHandler</MtouchHttpClientHandler>
     <ProvisioningType>automatic</ProvisioningType>
@@ -123,14 +123,14 @@
     <Reference Include="System.Numerics.Vectors" />
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="Xamarin.Forms" Version="5.0.0.2012" />
-    <PackageReference Include="Xamarin.Essentials" Version="1.6.1" />
+    <PackageReference Include="Xamarin.Forms" Version="5.0.0.2612" />
+    <PackageReference Include="Xamarin.Essentials" Version="1.8.0" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
   <ItemGroup>
-    <ProjectReference Include="..\xamarin.course\xamarin.course.csproj">
-      <Project>{505D5C21-EEB9-4F5A-B874-919A2E134309}</Project>
-      <Name>xamarin.course</Name>
+    <ProjectReference Include="..\xamarin.quest.course\xamarin.quest.course.csproj">
+      <Project>{503D6382-8764-4018-B885-B3DB76EFA3D8}</Project>
+      <Name>xamarin.quest.course</Name>
     </ProjectReference>
   </ItemGroup>
 </Project>
