@@ -27,7 +27,7 @@
             <ListView.Header>
                 <StackLayout MinimumHeightRequest="100"
                              Padding="10">
-                    <ProgressBar Progress="{Binding CompletedProgress}"
+                    <ProgressBar x:Name="progressBar"
                                  ProgressColor="#FC0810" />
                     <Label Text="{Binding CompletedHeader}"
                            TextColor="#1B1091"/>

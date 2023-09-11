@@ -1,4 +1,5 @@
-﻿using System.Collections.ObjectModel;
+﻿using System;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Windows.Input;
 using Xamarin.Forms;
@@ -50,6 +51,8 @@ namespace xamarin.quest.course
             }
         }
 
+        public event EventHandler<double> UpdateProgressBar;
+
         public ICommand AddItemCommand => new Command(this.AddNewItem);
         public ICommand MarkAsCompletedCommand => new Command<ToDoItem>(this.MarkAsCompleted);
 
@@ -71,6 +74,7 @@ namespace xamarin.quest.course
         {
             this.CompletedHeader = $"Completed {this.Items.Count(x => x.Completed)}/{this.Items.Count}";
             this.CompletedProgress = (double)this.Items.Count(x => x.Completed) / (double)this.Items.Count;
+            this.UpdateProgressBar?.Invoke(this, this.CompletedProgress);
         }
     }
 }
