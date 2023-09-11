@@ -8,7 +8,7 @@ namespace xamarin.quest.course.Converters
     {
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            return (bool)value ? Color.ForestGreen : (object)Color.Default;
+            return (bool)value ? Color.FromHex("20A4B4") : (object)Color.FromHex("3988F1");
         }
 
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
