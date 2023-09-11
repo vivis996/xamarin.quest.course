@@ -28,10 +28,16 @@ namespace xamarin.quest.course
         }
 
         public ICommand AddItemCommand => new Command(this.AddNewItem);
+        public ICommand MarkAsCompletedCommand => new Command<ToDoItem>(this.MarkAsCompleted);
 
         private void AddNewItem()
         {
             this.Items.Add(new ToDoItem($"Todo Item {this.Items.Count + 1}"));
+        }
+
+        private void MarkAsCompleted(ToDoItem item)
+        {
+            item.Completed = true;
         }
     }
 }
