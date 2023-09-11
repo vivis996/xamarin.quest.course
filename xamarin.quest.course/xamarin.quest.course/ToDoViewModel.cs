@@ -38,6 +38,8 @@ namespace xamarin.quest.course
         private void MarkAsCompleted(ToDoItem item)
         {
             item.Completed = true;
+            this.Items.Remove(item);
+            this.Items.Add(item);
         }
     }
 }

@@ -2,6 +2,7 @@
 <ContentPage
     Title="{Binding PageTitle}"
     x:Name="ToDoViewPage"
+    xmlns:local="clr-namespace:xamarin.quest.course.Converters"
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     x:Class="xamarin.quest.course.ToDoView">
@@ -12,6 +13,12 @@
                      Priority="0"
                      Command="{Binding AddItemCommand}"/>
     </ContentPage.ToolbarItems>
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <local:BoolToColorConverter x:Key="BoolToColor" />
+            <local:BoolToTextDecorationConverter x:Key="BoolToTextDecoration" />
+        </ResourceDictionary>
+    </ContentPage.Resources>
     <ContentPage.Content>
         <ListView ItemsSource="{Binding Items}" SelectedItem="{Binding SelectedItem}">
             <ListView.ItemTemplate>
@@ -23,7 +30,9 @@
                                        CommandParameter="{Binding .}"/>
                         </ViewCell.ContextActions>
                         <StackLayout>
-                            <Label Text="{Binding Name}"/>
+                            <Label Text="{Binding Name}"
+                                   TextColor="{Binding Completed, Converter={StaticResource BoolToColor}}"
+                                   TextDecorations="{Binding Completed, Converter={StaticResource BoolToTextDecoration}}"/>
                         </StackLayout>
                     </ViewCell>
                 </DataTemplate>
