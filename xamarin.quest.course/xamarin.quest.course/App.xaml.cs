@@ -8,7 +8,7 @@ namespace xamarin.quest.course
         {
             InitializeComponent();
 
-            MainPage = new MainPage();
+            MainPage = new ToDoView();
         }
 
         protected override void OnStart()

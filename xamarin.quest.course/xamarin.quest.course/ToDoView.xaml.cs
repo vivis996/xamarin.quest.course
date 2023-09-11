@@ -2,9 +2,9 @@
 
 namespace xamarin.quest.course
 {
-    public partial class MainPage : ContentPage
+    public partial class ToDoView : ContentPage
     {
-        public MainPage()
+        public ToDoView()
         {
             InitializeComponent();
         }
