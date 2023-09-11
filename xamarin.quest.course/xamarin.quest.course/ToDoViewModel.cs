@@ -26,5 +26,12 @@ namespace xamarin.quest.course
                 this.OnPropertyChanged(nameof(this.PageTitle));
             }
         }
+
+        public ICommand AddItemCommand => new Command(this.AddNewItem);
+
+        private void AddNewItem()
+        {
+            this.Items.Add(new ToDoItem($"Todo Item {this.Items.Count + 1}"));
+        }
     }
 }
