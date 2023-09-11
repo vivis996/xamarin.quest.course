@@ -7,6 +7,7 @@ namespace xamarin.quest.course
         public ToDoView()
         {
             InitializeComponent();
+            this.BindingContext = new ToDoViewModel();
         }
     }
 }
