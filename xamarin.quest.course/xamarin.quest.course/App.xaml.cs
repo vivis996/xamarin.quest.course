@@ -1,4 +1,6 @@
-﻿using Xamarin.Forms;
+﻿using System.Reflection;
+using Autofac;
+using Xamarin.Forms;
 
 namespace xamarin.quest.course
 {
@@ -8,7 +10,18 @@ namespace xamarin.quest.course
         {
             InitializeComponent();
 
-            MainPage = new NavigationPage(new Main.MainView());
+            // Class used for building the registration
+            var builder = new ContainerBuilder();
+            // Scan and register all classes in the assembly
+            var dataAccess = Assembly.GetExecutingAssembly();
+            builder.RegisterAssemblyTypes(dataAccess)
+                   .AsImplementedInterfaces()
+                   .AsSelf();
+
+            // Get container
+            var container = builder.Build();
+
+            MainPage = container.Resolve<Main.MainView>();
         }
 
         protected override void OnStart()
