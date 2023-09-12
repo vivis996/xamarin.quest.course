@@ -1,9 +1,9 @@
 ﻿using System.Threading.Tasks;
 using System.Windows.Input;
-using xamarin.quest.course.Dialog;
+using xamarin.quest.course.Common;
 using Xamarin.Forms;
 
-namespace xamarin.quest.course.Main
+namespace xamarin.quest.course.Modules.Main
 {
     public class MainViewModel
     {

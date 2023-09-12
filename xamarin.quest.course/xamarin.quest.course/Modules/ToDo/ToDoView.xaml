@@ -5,7 +5,7 @@
     xmlns:local="clr-namespace:xamarin.quest.course.Converters"
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    x:Class="xamarin.quest.course.ToDo.ToDoView">
+    x:Class="xamarin.quest.course.Modules.ToDo.ToDoView">
     <ContentPage.ToolbarItems>
         <ToolbarItem Text="Add Item"
                      IconImageSource="plus.png"

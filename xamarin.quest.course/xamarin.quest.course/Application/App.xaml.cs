@@ -2,7 +2,7 @@
 using Autofac;
 using Xamarin.Forms;
 
-namespace xamarin.quest.course
+namespace xamarin.quest.course.App
 {
     public partial class App : Application
     {
@@ -21,7 +21,7 @@ namespace xamarin.quest.course
             // Get container
             var container = builder.Build();
 
-            MainPage = container.Resolve<Calculator.CalculatorView>();
+            MainPage = container.Resolve<Modules.Calculator.CalculatorView>();
         }
 
         protected override void OnStart()

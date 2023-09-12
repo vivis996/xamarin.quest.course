@@ -1,6 +1,6 @@
 ﻿using Xamarin.Forms;
 
-namespace xamarin.quest.course.Calculator
+namespace xamarin.quest.course.Modules.Calculator
 {
     public partial class CalculatorView : ContentPage
     {

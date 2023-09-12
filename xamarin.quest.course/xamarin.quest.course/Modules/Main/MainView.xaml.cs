@@ -1,7 +1,6 @@
-﻿ using xamarin.quest.course.Dialog;
-using Xamarin.Forms;
+﻿using Xamarin.Forms;
 
-namespace xamarin.quest.course.Main
+namespace xamarin.quest.course.Modules.Main
 {
     public partial class MainView : ContentPage
     {

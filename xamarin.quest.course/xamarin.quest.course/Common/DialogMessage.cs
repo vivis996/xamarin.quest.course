@@ -1,7 +1,7 @@
 ﻿using System.Threading.Tasks;
 using Xamarin.Forms;
 
-namespace xamarin.quest.course.Dialog
+namespace xamarin.quest.course.Common
 {
     public class DialogMessage : IDialogMessage
     {

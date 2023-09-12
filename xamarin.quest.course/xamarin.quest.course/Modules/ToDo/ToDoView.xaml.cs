@@ -1,6 +1,6 @@
 ﻿using Xamarin.Forms;
 
-namespace xamarin.quest.course.ToDo
+namespace xamarin.quest.course.Modules.ToDo
 {
     public partial class ToDoView : ContentPage
     {

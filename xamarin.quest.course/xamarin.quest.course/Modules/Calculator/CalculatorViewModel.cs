@@ -1,7 +1,7 @@
 ﻿using System.Windows.Input;
 using Xamarin.Forms;
 
-namespace xamarin.quest.course.Calculator
+namespace xamarin.quest.course.Modules.Calculator
 {
     public enum CalculatorState
     {
