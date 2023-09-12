@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace xamarin.quest.course
+namespace xamarin.quest.course.ToDo
 {
     public class ToDoItem
     {

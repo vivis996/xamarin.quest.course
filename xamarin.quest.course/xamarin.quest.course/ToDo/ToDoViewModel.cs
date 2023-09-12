@@ -4,7 +4,7 @@ using System.Linq;
 using System.Windows.Input;
 using Xamarin.Forms;
 
-namespace xamarin.quest.course
+namespace xamarin.quest.course.ToDo
 {
     public class ToDoViewModel : BindableObject
     {
