@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "xamarin.quest.course.iOS", 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "xamarin.quest.course", "xamarin.quest.course\xamarin.quest.course\xamarin.quest.course.csproj", "{503D6382-8764-4018-B885-B3DB76EFA3D8}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "xamarin.quest.course.tests", "xamarin.quest.course.tests\xamarin.quest.course.tests.csproj", "{83211262-3771-4708-94A2-E19103184480}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -55,6 +57,18 @@ Global
 		{503D6382-8764-4018-B885-B3DB76EFA3D8}.Debug|iPhone.Build.0 = Debug|Any CPU
 		{503D6382-8764-4018-B885-B3DB76EFA3D8}.Release|iPhone.ActiveCfg = Release|Any CPU
 		{503D6382-8764-4018-B885-B3DB76EFA3D8}.Release|iPhone.Build.0 = Release|Any CPU
+		{83211262-3771-4708-94A2-E19103184480}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{83211262-3771-4708-94A2-E19103184480}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{83211262-3771-4708-94A2-E19103184480}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{83211262-3771-4708-94A2-E19103184480}.Release|Any CPU.Build.0 = Release|Any CPU
+		{83211262-3771-4708-94A2-E19103184480}.Debug|iPhoneSimulator.ActiveCfg = Debug|Any CPU
+		{83211262-3771-4708-94A2-E19103184480}.Debug|iPhoneSimulator.Build.0 = Debug|Any CPU
+		{83211262-3771-4708-94A2-E19103184480}.Release|iPhoneSimulator.ActiveCfg = Release|Any CPU
+		{83211262-3771-4708-94A2-E19103184480}.Release|iPhoneSimulator.Build.0 = Release|Any CPU
+		{83211262-3771-4708-94A2-E19103184480}.Debug|iPhone.ActiveCfg = Debug|Any CPU
+		{83211262-3771-4708-94A2-E19103184480}.Debug|iPhone.Build.0 = Debug|Any CPU
+		{83211262-3771-4708-94A2-E19103184480}.Release|iPhone.ActiveCfg = Release|Any CPU
+		{83211262-3771-4708-94A2-E19103184480}.Release|iPhone.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
