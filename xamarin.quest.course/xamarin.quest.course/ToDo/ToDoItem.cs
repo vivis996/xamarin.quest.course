@@ -20,6 +20,7 @@ namespace xamarin.quest.course.ToDo
                 new ToDoItem("Have a dev meeting"),
                 new ToDoItem("Lunch time"),
                 new ToDoItem("Family time"),
+                new ToDoItem("Go to gym"),
             };
         }
     }
