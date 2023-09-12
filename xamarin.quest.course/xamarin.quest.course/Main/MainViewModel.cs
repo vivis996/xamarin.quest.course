@@ -1,17 +1,24 @@
 ﻿using System.Threading.Tasks;
 using System.Windows.Input;
+using xamarin.quest.course.Dialog;
 using Xamarin.Forms;
 
 namespace xamarin.quest.course.Main
 {
     public class MainViewModel
     {
+        private readonly IDialogMessage _dialogMessage;
+
+        public MainViewModel(IDialogMessage dialogMessage)
+        {
+            this._dialogMessage = dialogMessage;
+        }
+
         public ICommand DisplayAlertCommand => new Command(async () => await ShowAlert());
 
         private async Task ShowAlert()
         {
-            // Don't do this!
-            await Application.Current.MainPage.DisplayAlert("Hello", "Hello there!", "Ok");
+            await this._dialogMessage.DisplayAlert("Hello", "Hello there!", "Ok");
         }
     }
 }

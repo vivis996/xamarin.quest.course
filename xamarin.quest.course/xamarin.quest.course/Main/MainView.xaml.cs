@@ -1,4 +1,5 @@
-﻿using Xamarin.Forms;
+﻿using xamarin.quest.course.Dialog;
+using Xamarin.Forms;
 
 namespace xamarin.quest.course.Main
 {
@@ -7,7 +8,7 @@ namespace xamarin.quest.course.Main
         public MainView()
         {
             InitializeComponent();
-            this.BindingContext = new MainViewModel();
+            this.BindingContext = new MainViewModel(new DialogMessage());
         }
     }
 }
