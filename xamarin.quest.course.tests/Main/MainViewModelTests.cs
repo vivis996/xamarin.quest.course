@@ -1,4 +1,6 @@
-﻿using xamarin.quest.course.Main;
+﻿using Moq;
+using xamarin.quest.course.Dialog;
+using xamarin.quest.course.Main;
 
 namespace xamarin.quest.course.tests.Main
 {
@@ -7,12 +9,14 @@ namespace xamarin.quest.course.tests.Main
         [Fact]
         public void DisplayAlertCommand_WhenCalled_DisplaysAlert()
         {
-            var dialogMessage = new DialogMessageMock();
-            var viewModel = new MainViewModel(dialogMessage);
+            var dialogMessage = new Mock<IDialogMessage>();
+            dialogMessage.Setup(x => x.DisplayAlert("a", "b", "c"))
+                         .Returns(Task.CompletedTask);
+            var viewModel = new MainViewModel(dialogMessage.Object);
 
             viewModel.DisplayAlertCommand.Execute(null);
 
-            Assert.Equal(1, dialogMessage.DisplayAlertCallCount);
+            dialogMessage.Verify(x => x.DisplayAlert("a", "b", "c"), Times.Once);
         }
     }
 }
