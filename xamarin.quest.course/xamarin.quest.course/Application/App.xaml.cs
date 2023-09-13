@@ -21,7 +21,7 @@ namespace xamarin.quest.course.App
             // Get container
             var container = builder.Build();
 
-            MainPage = container.Resolve<Modules.Calculator.CalculatorView>();
+            MainPage = container.Resolve<Modules.History.HistoryView>();
         }
 
         protected override void OnStart()

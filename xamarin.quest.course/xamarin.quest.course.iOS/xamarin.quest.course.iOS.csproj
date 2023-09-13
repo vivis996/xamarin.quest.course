@@ -137,5 +137,6 @@
     <BundleResource Include="Resources\plus.png" />
     <BundleResource Include="Resources\plus%402x.png" />
     <BundleResource Include="Resources\plus%403x.png" />
+    <BundleResource Include="Resources\nohistory.png" />
   </ItemGroup>
 </Project>
