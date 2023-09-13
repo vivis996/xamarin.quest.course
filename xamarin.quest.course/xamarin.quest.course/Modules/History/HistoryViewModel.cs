@@ -15,18 +15,12 @@ namespace xamarin.quest.course.Modules.History
 
         public HistoryViewModel()
         {
-            this.Items = new ObservableCollection<string>
-            {
-                "44 + 5 = 49",
-                "36 / 9 = 4",
-                "21 + 4 = 25",
-            };
+            this.Items = new ObservableCollection<string>();
         }
 
         public override Task InitializeAsync(object parameter)
         {
             var operations = parameter as List<string>;
-            operations.AddRange(this.Items);
             this.Items = new ObservableCollection<string>(operations);
             this.OnPropertyChanged(nameof(this.Items));
             return base.InitializeAsync(parameter);
@@ -37,6 +31,7 @@ namespace xamarin.quest.course.Modules.History
         private void DeleteItems(string item)
         {
             this.Items.Remove(item);
+            MessagingCenter.Send(this, "Items", new List<string>(this.Items));
         }
     }
 }

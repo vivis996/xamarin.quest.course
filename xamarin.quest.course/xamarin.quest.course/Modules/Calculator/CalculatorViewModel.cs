@@ -39,6 +39,15 @@ namespace xamarin.quest.course.Modules.Calculator
             this._state = CalculatorState.PopulatingFirstNumber;
             this._currentOperation = Operation.None;
             this._navigation = navigation;
+            this.SubscriptionToMessage();
+        }
+
+        private void SubscriptionToMessage()
+        {
+            MessagingCenter.Subscribe<HistoryViewModel, List<string>>(this, "Items", (vm, list) =>
+            {
+                this._calculatorHistory = list;
+            });
         }
 
         public string DisplayText
