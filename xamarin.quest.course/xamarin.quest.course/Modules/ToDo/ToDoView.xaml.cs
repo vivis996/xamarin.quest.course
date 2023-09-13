@@ -4,10 +4,9 @@ namespace xamarin.quest.course.Modules.ToDo
 {
     public partial class ToDoView : ContentPage
     {
-        public ToDoView()
+        public ToDoView(ToDoViewModel toDoViewModel)
         {
             InitializeComponent();
-            var toDoViewModel = new ToDoViewModel();
             this.BindingContext = toDoViewModel;
             toDoViewModel.UpdateProgressBar += ToDoViewModel_UpdateProgressBar;
         }
