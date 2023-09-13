@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ContentPage
+    Title="App Info"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:appinformation="clr-namespace:xamarin.quest.course.Modules.Info.AppInformation"
+    x:DataType="appinformation:AppInformationViewModel"
+    x:Class="xamarin.quest.course.Modules.Info.AppInformation.AppInformationView">
+    <ContentPage.Content>
+        <StackLayout Padding="20">
+            <Label Text="{Binding AppName}" />
+            <Label Text="{Binding AppVersion}" />
+            <Label Text="{Binding Author}" />
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

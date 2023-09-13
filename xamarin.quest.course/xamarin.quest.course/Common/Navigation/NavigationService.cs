@@ -2,7 +2,9 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using Autofac;
-using xamarin.quest.course.Modules.History;
+using xamarin.quest.course.Modules.Info;
+using xamarin.quest.course.Modules.Info.AppInformation;
+using xamarin.quest.course.Modules.Info.History;
 using Xamarin.Forms;
 
 namespace xamarin.quest.course.Common.Navigation
@@ -15,6 +17,8 @@ namespace xamarin.quest.course.Common.Navigation
         private readonly Dictionary<Type, Type> _pageMap = new Dictionary<Type, Type>()
         {
             { typeof(HistoryViewModel), typeof(HistoryView) },
+            { typeof(AppInformationViewModel), typeof(AppInformationView) },
+            { typeof(InfoViewModel), typeof(InfoView) },
         };
 
         public NavigationService(Func<INavigation> navigation, IComponentContext container)

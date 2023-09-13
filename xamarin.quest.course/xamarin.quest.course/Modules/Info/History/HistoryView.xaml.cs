@@ -1,6 +1,6 @@
 ﻿using Xamarin.Forms;
 
-namespace xamarin.quest.course.Modules.History
+namespace xamarin.quest.course.Modules.Info.History
 {
     public partial class HistoryView : ContentPage
     {

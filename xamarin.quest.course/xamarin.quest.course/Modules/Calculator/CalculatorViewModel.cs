@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using xamarin.quest.course.Common.Navigation;
-using xamarin.quest.course.Modules.History;
+using xamarin.quest.course.Modules.Info;
+using xamarin.quest.course.Modules.Info.History;
 using Xamarin.Forms;
 
 namespace xamarin.quest.course.Modules.Calculator
@@ -67,7 +68,7 @@ namespace xamarin.quest.course.Modules.Calculator
 
         private async Task GoToHistory()
         {
-            await this._navigation.PushAsync<HistoryViewModel>(this._calculatorHistory);
+            await this._navigation.PushAsync<InfoViewModel>(this._calculatorHistory);
         }
 
         private void AddChar(string character)
