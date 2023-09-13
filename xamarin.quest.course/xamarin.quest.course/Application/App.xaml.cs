@@ -1,5 +1,7 @@
-﻿using System.Reflection;
+﻿using System;
+using System.Reflection;
 using Autofac;
+using xamarin.quest.course.Common.Navigation;
 using Xamarin.Forms;
 
 namespace xamarin.quest.course.App
@@ -18,10 +20,19 @@ namespace xamarin.quest.course.App
                    .AsImplementedInterfaces()
                    .AsSelf();
 
+            NavigationPage navigationPage = null;
+
+            Func<INavigation> navigationFunc = () => {
+                return navigationPage.Navigation;
+            };
+
+            builder.RegisterType<NavigationService>().As<INavigationService>()
+                .WithParameter("navigation", navigationFunc);
+
             // Get container
             var container = builder.Build();
-
-            MainPage = container.Resolve<Modules.History.HistoryView>();
+            navigationPage = new NavigationPage(container.Resolve<Modules.Calculator.CalculatorView>());
+            MainPage = navigationPage;
         }
 
         protected override void OnStart()

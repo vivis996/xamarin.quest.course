@@ -1,11 +1,12 @@
 ﻿using System;
 using System.Collections.ObjectModel;
 using System.Windows.Input;
+using xamarin.quest.course.Common.Navigation;
 using Xamarin.Forms;
 
 namespace xamarin.quest.course.Modules.History
 {
-    public class HistoryViewModel : BindableObject
+    public class HistoryViewModel : BaseViewModel
     {
         public ObservableCollection<string> Items { get; set; }
         public HistoryViewModel()

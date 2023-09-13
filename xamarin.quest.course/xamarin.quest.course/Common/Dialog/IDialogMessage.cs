@@ -1,6 +1,6 @@
 ﻿using System.Threading.Tasks;
 
-namespace xamarin.quest.course.Common
+namespace xamarin.quest.course.Common.Dialog
 {
     public interface IDialogMessage
     {

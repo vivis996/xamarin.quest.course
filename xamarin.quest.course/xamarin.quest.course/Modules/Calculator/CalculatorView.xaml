@@ -27,12 +27,12 @@
                     Value="32" />
         </Style>
     </ContentPage.Resources>
-    <!--<ContentPage.ToolbarItems>
+    <ContentPage.ToolbarItems>
         <ToolbarItem Text="Info"
                  Order="Primary"
                  Priority="0"
                  Command="{Binding ShowHistoryCommand}" />
-    </ContentPage.ToolbarItems>-->
+    </ContentPage.ToolbarItems>
     <ContentPage.Content>
         <Grid HorizontalOptions="Fill"
           VerticalOptions="EndAndExpand" Padding="10">

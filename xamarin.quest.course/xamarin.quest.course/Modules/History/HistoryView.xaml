@@ -6,11 +6,6 @@
     xmlns:history="clr-namespace:xamarin.quest.course.Modules.History"
     x:DataType="history:HistoryViewModel"
     x:Class="xamarin.quest.course.Modules.History.HistoryView">
-    <ContentPage.Padding>
-        <OnPlatform x:TypeArguments="Thickness">
-            <On Platform="iOS" Value="0, 60, 0, 0" />
-        </OnPlatform>
-    </ContentPage.Padding>
     <ContentPage.Content>
         <CollectionView ItemsSource="{Binding Items}">
             <CollectionView.ItemTemplate>

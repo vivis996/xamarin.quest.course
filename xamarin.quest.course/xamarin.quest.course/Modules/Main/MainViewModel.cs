@@ -1,6 +1,6 @@
 ﻿using System.Threading.Tasks;
 using System.Windows.Input;
-using xamarin.quest.course.Common;
+using xamarin.quest.course.Common.Dialog;
 using Xamarin.Forms;
 
 namespace xamarin.quest.course.Modules.Main

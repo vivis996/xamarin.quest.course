@@ -1,4 +1,8 @@
-﻿using System.Windows.Input;
+﻿using System;
+using System.Threading.Tasks;
+using System.Windows.Input;
+using xamarin.quest.course.Common.Navigation;
+using xamarin.quest.course.Modules.History;
 using Xamarin.Forms;
 
 namespace xamarin.quest.course.Modules.Calculator
@@ -26,11 +30,13 @@ namespace xamarin.quest.course.Modules.Calculator
         private string _secondNumber = string.Empty;
         private CalculatorState _state;
         private Operation _currentOperation;
+        private readonly INavigationService _navigation;
 
-        public CalculatorViewModel()
+        public CalculatorViewModel(INavigationService navigation)
         {
             this._state = CalculatorState.PopulatingFirstNumber;
             this._currentOperation = Operation.None;
+            this._navigation = navigation;
         }
 
         public string DisplayText
@@ -46,6 +52,12 @@ namespace xamarin.quest.course.Modules.Calculator
         public ICommand ClearCommand => new Command(this.ClearText);
         public ICommand AddCharCommand => new Command<string>(this.AddChar);
         public ICommand OperationCommand => new Command<Operation>(this.PerformOperation);
+        public ICommand ShowHistoryCommand => new Command(async () => await this.GoToHistory());
+
+        private async Task GoToHistory()
+        {
+            await this._navigation.PushAsync<HistoryViewModel>();
+        }
 
         private void AddChar(string character)
         {
