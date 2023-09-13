@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using xamarin.quest.course.Common.Navigation;
@@ -31,6 +32,7 @@ namespace xamarin.quest.course.Modules.Calculator
         private CalculatorState _state;
         private Operation _currentOperation;
         private readonly INavigationService _navigation;
+        private List<string> _calculatorHistory = new List<string>();
 
         public CalculatorViewModel(INavigationService navigation)
         {
@@ -56,7 +58,7 @@ namespace xamarin.quest.course.Modules.Calculator
 
         private async Task GoToHistory()
         {
-            await this._navigation.PushAsync<HistoryViewModel>();
+            await this._navigation.PushAsync<HistoryViewModel>(this._calculatorHistory);
         }
 
         private void AddChar(string character)
@@ -125,10 +127,31 @@ namespace xamarin.quest.course.Modules.Calculator
                     break;
             }
             this.DisplayText = result.ToString();
+            var text = $"{this._firstNumber} {this.GetOperationString()} {this._secondNumber} = {result}";
+            this._calculatorHistory.Add(text);
             this._currentOperation = Operation.None;
             this._state = CalculatorState.PopulatingFirstNumber;
             this._firstNumber = string.Empty;
             this._secondNumber = string.Empty;
+        }
+
+        private string GetOperationString()
+        {
+            switch (this._currentOperation)
+            {
+                case Operation.Add:
+                    return "+";
+                case Operation.Subtract:
+                    return "-";
+                case Operation.Divide:
+                    return "/";
+                case Operation.Multiply:
+                    return "*";
+                case Operation.None:
+                case Operation.Equal:
+                default:
+                    return string.Empty;
+            }
         }
     }
 }
