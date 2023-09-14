@@ -4,7 +4,7 @@ using Newtonsoft.Json;
 
 namespace xamarin.quest.course.part2
 {
-    public class NetworkService
+    public class NetworkService : INetworkService
     {
         private HttpClient _httpClient;
 

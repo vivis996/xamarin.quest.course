@@ -7,7 +7,7 @@ namespace xamarin.quest.course.part2
         public Mainview()
         {
             InitializeComponent();
-            this.BindingContext = new MainViewModel();
+            this.BindingContext = new MainViewModel(new NetworkService());
         }
     }
 }
