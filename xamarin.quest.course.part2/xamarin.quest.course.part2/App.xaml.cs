@@ -1,6 +1,4 @@
-﻿using System;
-using Xamarin.Forms;
-using Xamarin.Forms.Xaml;
+﻿using Xamarin.Forms;
 
 namespace xamarin.quest.course.part2
 {
@@ -10,7 +8,7 @@ namespace xamarin.quest.course.part2
         {
             InitializeComponent();
 
-            MainPage = new MainPage();
+            MainPage = new Mainview();
         }
 
         protected override void OnStart ()
@@ -26,4 +24,3 @@ namespace xamarin.quest.course.part2
         }
     }
 }
-
