@@ -1,6 +1,6 @@
 ﻿using Newtonsoft.Json;
 
-namespace xamarin.quest.course.part2.Models
+namespace xamarin.quest.course.part2.Models.Api
 {
     public class Search
     {

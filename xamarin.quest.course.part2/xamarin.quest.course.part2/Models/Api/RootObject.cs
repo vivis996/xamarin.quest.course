@@ -1,7 +1,7 @@
 ﻿using Newtonsoft.Json;
 using System.Collections.Generic;
 
-namespace xamarin.quest.course.part2.Models
+namespace xamarin.quest.course.part2.Models.Api
 {
     public class RootObject
     {

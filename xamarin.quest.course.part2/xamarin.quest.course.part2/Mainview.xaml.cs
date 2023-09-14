@@ -11,4 +11,3 @@ namespace xamarin.quest.course.part2
         }
     }
 }
-

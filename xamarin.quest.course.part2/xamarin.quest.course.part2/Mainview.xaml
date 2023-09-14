@@ -2,13 +2,19 @@
 <ContentPage
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+    xmlns:models="clr-namespace:xamarin.quest.course.part2.Models"
+    xmlns:part2="clr-namespace:xamarin.quest.course.part2"
+    x:DataType="part2:MainViewModel"
     x:Class="xamarin.quest.course.part2.Mainview">
     <ContentPage.Content>
         <CollectionView ItemsSource="{Binding Items}">
             <CollectionView.ItemTemplate>
-                <DataTemplate>
+                <DataTemplate x:DataType="models:MovieData">
                     <Grid HorizontalOptions="CenterAndExpand">
-                        <Image Source="placeholder.png"
+                        <ffimageloading:CachedImage
+                               LoadingPlaceholder="placeholder.png"
+                               Source="{Binding ImageUrl}"
                                Aspect="AspectFill"
                                HeightRequest="300" />
                         <Label VerticalOptions="End"
@@ -20,7 +26,7 @@
                                Padding="15"
                                HeightRequest="70"
                                LineBreakMode="TailTruncation"
-                               Text="{Binding .}" />
+                               Text="{Binding Title}" />
                     </Grid>
                 </DataTemplate>
             </CollectionView.ItemTemplate>
