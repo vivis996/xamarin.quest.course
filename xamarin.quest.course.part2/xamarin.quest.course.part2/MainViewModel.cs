@@ -25,9 +25,17 @@ namespace xamarin.quest.course.part2
 
         private async Task GetMovieData()
         {
-            var uri = Constants.GetMoviesUri(this.SearchTerm);
+            var uri = Constants.GetMoviesUri(this.SearchTerm?.Trim());
             var result = await this._networkService.GetAsync<RootObject>(uri);
-            var movieData = result.Search.Select(s => new MovieData(s.Title, s.Poster.Replace("SX300", "SX600")));
+            if ((bool)!result?.Search?.Any())
+                return;
+            var movieData = result.Search
+                                  //Eliminate duplicate movies
+                                  .GroupBy(x => new { x.Title, x.Year })
+                                  .Select(x => x.First())
+                                  //Sort by year descending
+                                  .OrderByDescending(x => x.Year)
+                                  .Select(s => new MovieData(s.Title, s.Poster.Replace("SX300", "SX600")));
             this.Items = new ObservableCollection<MovieData>(movieData);
             this.OnPropertyChanged(nameof(this.Items));
         }
