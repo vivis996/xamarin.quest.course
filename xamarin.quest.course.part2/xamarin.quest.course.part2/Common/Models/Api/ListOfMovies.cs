@@ -1,12 +1,12 @@
 ﻿using Newtonsoft.Json;
 using System.Collections.Generic;
 
-namespace xamarin.quest.course.part2.Models.Api
+namespace xamarin.quest.course.part2.Common.Models.Api
 {
-    public class RootObject
+    public class ListOfMovies
     {
         [JsonProperty("Search")]
-        public List<Search> Search { get; set; }
+        public List<BaseMovieInformation> Search { get; set; }
 
         [JsonProperty("totalResults")]
         public string TotalResults { get; set; }

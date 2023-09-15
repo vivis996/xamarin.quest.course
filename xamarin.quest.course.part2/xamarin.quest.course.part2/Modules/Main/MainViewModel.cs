@@ -2,11 +2,12 @@
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Input;
-using xamarin.quest.course.part2.Models;
-using xamarin.quest.course.part2.Models.Api;
+using xamarin.quest.course.part2.Common.Models;
+using xamarin.quest.course.part2.Common.Models.Api;
+using xamarin.quest.course.part2.Common.Network;
 using Xamarin.Forms;
 
-namespace xamarin.quest.course.part2
+namespace xamarin.quest.course.part2.Modules.Main
 {
     public class MainViewModel : BindableObject
     {
@@ -25,8 +26,8 @@ namespace xamarin.quest.course.part2
 
         private async Task GetMovieData()
         {
-            var uri = Constants.GetMoviesUri(this.SearchTerm?.Trim());
-            var result = await this._networkService.GetAsync<RootObject>(uri);
+            var uri = ApiConstants.GetMoviesUri(this.SearchTerm?.Trim());
+            var result = await this._networkService.GetAsync<ListOfMovies>(uri);
             if ((bool)!result?.Search?.Any())
                 return;
             var movieData = result.Search

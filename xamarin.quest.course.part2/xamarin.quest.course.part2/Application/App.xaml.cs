@@ -1,8 +1,8 @@
-﻿using Xamarin.Forms;
+﻿using xamarin.quest.course.part2.Modules.Main;
 
-namespace xamarin.quest.course.part2
+namespace xamarin.quest.course.part2.Application
 {
-    public partial class App : Application
+    public partial class App : Xamarin.Forms.Application
     {
         public App ()
         {

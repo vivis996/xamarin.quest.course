@@ -1,7 +1,7 @@
-﻿namespace xamarin.quest.course.part2
+﻿namespace xamarin.quest.course.part2.Common.Network
 {
-	public static class Constants
-	{
+	public static class ApiConstants
+    {
 		public const string ApiKey = "786e0536";
 
 		public static string GetMoviesUri(string searchTerm, int page = 1)

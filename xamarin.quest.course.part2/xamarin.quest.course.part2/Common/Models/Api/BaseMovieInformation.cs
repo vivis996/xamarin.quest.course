@@ -1,8 +1,8 @@
 ﻿using Newtonsoft.Json;
 
-namespace xamarin.quest.course.part2.Models.Api
+namespace xamarin.quest.course.part2.Common.Models.Api
 {
-    public class Search
+    public class BaseMovieInformation
     {
         [JsonProperty("Title")]
         public string Title { get; set; }

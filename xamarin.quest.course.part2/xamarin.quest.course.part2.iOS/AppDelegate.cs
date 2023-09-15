@@ -4,6 +4,7 @@ using System.Linq;
 using FFImageLoading.Forms.Platform;
 using Foundation;
 using UIKit;
+using xamarin.quest.course.part2.Application;
 
 namespace xamarin.quest.course.part2.iOS
 {

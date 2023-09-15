@@ -3,10 +3,10 @@
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
-    xmlns:models="clr-namespace:xamarin.quest.course.part2.Models"
-    xmlns:part2="clr-namespace:xamarin.quest.course.part2"
+    xmlns:models="clr-namespace:xamarin.quest.course.part2.Common.Models"
+    xmlns:part2="clr-namespace:xamarin.quest.course.part2.Modules.Main"
     x:DataType="part2:MainViewModel"
-    x:Class="xamarin.quest.course.part2.Mainview">
+    x:Class="xamarin.quest.course.part2.Modules.Main.Mainview">
     <ContentPage.Content>
         <StackLayout>
             <StackLayout.Margin>

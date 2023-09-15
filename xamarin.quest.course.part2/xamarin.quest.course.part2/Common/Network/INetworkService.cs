@@ -1,6 +1,6 @@
 ﻿using System.Threading.Tasks;
 
-namespace xamarin.quest.course.part2
+namespace xamarin.quest.course.part2.Common.Network
 {
     public interface INetworkService
     {

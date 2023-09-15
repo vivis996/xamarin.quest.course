@@ -1,4 +1,4 @@
-﻿namespace xamarin.quest.course.part2.Models
+﻿namespace xamarin.quest.course.part2.Common.Models
 {
     public class MovieData
     {

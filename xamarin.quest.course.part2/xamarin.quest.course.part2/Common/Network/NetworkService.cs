@@ -3,7 +3,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
 
-namespace xamarin.quest.course.part2
+namespace xamarin.quest.course.part2.Common.Network
 {
     public class NetworkService : INetworkService
     {

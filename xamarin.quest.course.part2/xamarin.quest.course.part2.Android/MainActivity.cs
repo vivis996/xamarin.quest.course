@@ -5,6 +5,7 @@ using Android.Content.PM;
 using Android.Runtime;
 using Android.OS;
 using FFImageLoading.Forms.Platform;
+using xamarin.quest.course.part2.Application;
 
 namespace xamarin.quest.course.part2.Droid
 {
