@@ -133,4 +133,12 @@
       <Name>xamarin.quest.course</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\plus.png" />
+    <BundleResource Include="Resources\plus%402x.png" />
+    <BundleResource Include="Resources\plus%403x.png" />
+    <BundleResource Include="Resources\nohistory.png" />
+    <BundleResource Include="Resources\history.png" />
+    <BundleResource Include="Resources\information.png" />
+  </ItemGroup>
 </Project>

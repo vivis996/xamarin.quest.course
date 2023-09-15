@@ -1,0 +1,90 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ContentPage
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+    xmlns:moviedetails="clr-namespace:xamarin.quest.course.part2.Modules.MovieDetails"
+    xmlns:local="clr-namespace:xamarin.quest.course.part2.Common.Converters"
+    xmlns:views="http://xamarin.com/schemas/2020/toolkit"
+    xmlns:sharedTransitions="clr-namespace:Plugin.SharedTransitions;assembly=Plugin.SharedTransitions"
+    x:DataType="moviedetails:MovieDetailsViewModel"
+    x:Class="xamarin.quest.course.part2.Modules.MovieDetails.MovieDetailsView"
+    NavigationPage.HasNavigationBar="False">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <local:BoolToFavoriteImageConverter x:Key="boolToFavorite"/>
+            <Style x:Key="primaryLabel" TargetType="Label">
+                <Setter Property="FontAttributes" Value="Bold" />
+                <Setter Property="FontSize" Value="Medium" />
+                <Setter Property="TextColor" Value="#007AFF" />
+            </Style>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <ContentPage.Padding>
+        <OnPlatform x:TypeArguments="Thickness">
+            <On Platform="iOS" Value="0, 60, 0, 0" />
+        </OnPlatform>
+    </ContentPage.Padding>
+    <ContentPage.Content>
+        <ScrollView VerticalOptions="FillAndExpand"
+                    BackgroundColor="White">
+            <StackLayout>
+                <Grid>
+                    <ffimageloading:CachedImage Source="{Binding MovieData.ImageUrl}"
+                                            Aspect="AspectFill"
+                                            HeightRequest="500"
+                                            sharedTransitions:Transition.Name="MovieImage" />
+                    <Frame WidthRequest="40"
+                       HeightRequest="40"
+                       Margin="0, 50, 30, 0"
+                       Padding="0"
+                       VerticalOptions="Start"
+                       HorizontalOptions="End"
+                       CornerRadius="20">
+                        <ImageButton Source="close.png"
+                                 BackgroundColor="White"
+                                 Command="{Binding GoBackCommand}" />
+                    </Frame>
+                </Grid>
+                <Label Text="{Binding MovieData.Title}"
+                       Padding="20, 8, 0, 0"
+                       FontAttributes="Bold"
+                       FontSize="Title" />
+                <Grid>
+                    <Label Text="{Binding MovieData.Year, StringFormat='Year: {0}'}"
+                           Padding="20, 8, 0, 0"
+                           TextColor="Gray" />
+                    <ImageButton x:Name="imageButton"
+                                 Source="{Binding MovieInformation.IsFavorite, Converter={StaticResource boolToFavorite}}"
+                                 HorizontalOptions="End"
+                                 Margin="0, 0, 30, 0"
+                                 WidthRequest="50"
+                                 HeightRequest="50"
+                                 BackgroundColor="White"
+                                 Command="{Binding FavoriteCommand}"
+                                 Clicked="imageButton_Clicked" />
+                </Grid>
+                <views:Expander>
+                    <views:Expander.Header>
+                        <Label Text="Plot"
+                               Padding="20"
+                               Style="{Binding Source={StaticResource primaryLabel}}" />
+                    </views:Expander.Header>
+                    <Label Text="{Binding MovieInformation.Plot}"
+                           Padding="20, 0, 20, 0"
+                           TextColor="Gray" />
+                </views:Expander>
+                <views:Expander>
+                    <views:Expander.Header>
+                        <Label Text="Cast"
+                               Padding="20, 5, 20, 0"
+                               Style="{Binding Source={StaticResource primaryLabel}}" />
+                    </views:Expander.Header>
+                    <Label Text="{Binding MovieInformation.Actors}"
+                                       Padding="20, 10, 20, 20"
+                                       TextColor="Gray" />
+                </views:Expander>
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>
