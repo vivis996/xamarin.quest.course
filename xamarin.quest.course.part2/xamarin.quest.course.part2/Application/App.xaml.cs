@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Reflection;
 using Autofac;
+using Plugin.SharedTransitions;
 using xamarin.quest.course.part2.Common.Navigation;
 using xamarin.quest.course.part2.Modules.Main;
 using Xamarin.Forms;
@@ -21,7 +22,7 @@ namespace xamarin.quest.course.part2.Application
                    .AsImplementedInterfaces()
                    .AsSelf();
             //register navigation service
-            NavigationPage navigationPage = null;
+            SharedTransitionNavigationPage navigationPage = null;
             Func<INavigation> navigationFunc = () =>
             {
                 return navigationPage.Navigation;
@@ -31,7 +32,7 @@ namespace xamarin.quest.course.part2.Application
             //get container
             var container = builder.Build();
             // set first page
-            navigationPage = new NavigationPage(container.Resolve<Mainview>());
+            navigationPage = new SharedTransitionNavigationPage(container.Resolve<Mainview>());
             MainPage = navigationPage;
         }
 

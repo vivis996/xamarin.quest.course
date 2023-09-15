@@ -6,6 +6,7 @@
     xmlns:moviedetails="clr-namespace:xamarin.quest.course.part2.Modules.MovieDetails"
     xmlns:local="clr-namespace:xamarin.quest.course.part2.Common.Converters"
     xmlns:views="http://xamarin.com/schemas/2020/toolkit"
+    xmlns:sharedTransitions="clr-namespace:Plugin.SharedTransitions;assembly=Plugin.SharedTransitions"
     x:DataType="moviedetails:MovieDetailsViewModel"
     x:Class="xamarin.quest.course.part2.Modules.MovieDetails.MovieDetailsView"
     NavigationPage.HasNavigationBar="False">
@@ -31,7 +32,8 @@
                 <Grid>
                     <ffimageloading:CachedImage Source="{Binding MovieData.ImageUrl}"
                                             Aspect="AspectFill"
-                                            HeightRequest="500" />
+                                            HeightRequest="500"
+                                            sharedTransitions:Transition.Name="MovieImage" />
                     <Frame WidthRequest="40"
                        HeightRequest="40"
                        Margin="0, 50, 30, 0"

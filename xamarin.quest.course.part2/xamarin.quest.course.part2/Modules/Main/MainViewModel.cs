@@ -29,6 +29,13 @@ namespace xamarin.quest.course.part2.Modules.Main
 
         public string SearchTerm { get; set; }
 
+        private string _selectedMovieId;
+        public string SelectedMovieId
+        {
+            get => this._selectedMovieId;
+            set => this.SetProperty(ref this._selectedMovieId, value);
+        }
+
         public MainViewModel(INetworkService networkService,
                              INavigationService navigationService)
         {
@@ -43,6 +50,8 @@ namespace xamarin.quest.course.part2.Modules.Main
         {
             if (this.SelectedMovie == null)
                 return;
+
+            this.SelectedMovieId = this.SelectedMovie.ImdbID;
 
             await this._navigationService.PushAsync<MovieDetailsViewModel>(this.SelectedMovie);
             this.SelectedMovie = null;

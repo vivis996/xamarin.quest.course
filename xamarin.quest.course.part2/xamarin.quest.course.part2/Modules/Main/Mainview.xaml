@@ -5,8 +5,10 @@
     xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
     xmlns:models="clr-namespace:xamarin.quest.course.part2.Common.Models"
     xmlns:part2="clr-namespace:xamarin.quest.course.part2.Modules.Main"
+    xmlns:sharedTransitions="clr-namespace:Plugin.SharedTransitions;assembly=Plugin.SharedTransitions"
     x:DataType="part2:MainViewModel"
     x:Class="xamarin.quest.course.part2.Modules.Main.Mainview"
+    sharedTransitions:SharedTransitionNavigationPage.TransitionSelectedGroup="{Binding SelectedMovieId}"
     NavigationPage.HasNavigationBar="False">
     <ContentPage.Padding>
         <OnPlatform x:TypeArguments="Thickness">
@@ -38,7 +40,9 @@
                                        LoadingPlaceholder="placeholder.png"
                                        Source="{Binding ImageUrl}"
                                        Aspect="AspectFill"
-                                       HeightRequest="300" />
+                                       HeightRequest="300"
+                                       sharedTransitions:Transition.Name="MovieImage"
+                                       sharedTransitions:Transition.Group="{Binding ImdbID}" />
                                     <Label VerticalOptions="End"
                                        FontSize="38"
                                        TextColor="White"
