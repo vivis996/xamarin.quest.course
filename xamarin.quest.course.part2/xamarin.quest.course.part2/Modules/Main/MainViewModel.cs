@@ -11,7 +11,7 @@ namespace xamarin.quest.course.part2.Modules.Main
 {
     public class MainViewModel : BindableObject
     {
-        private INetworkService _networkService;
+        private readonly INetworkService _networkService;
 
         public ObservableCollection<MovieData> Items { get; set; }
 
