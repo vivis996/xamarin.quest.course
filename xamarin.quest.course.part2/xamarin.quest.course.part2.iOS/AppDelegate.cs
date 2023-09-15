@@ -25,7 +25,7 @@ namespace xamarin.quest.course.part2.iOS
         {
             global::Xamarin.Forms.Forms.Init();
 
-            FFImageLoading.Forms.Platform.CachedImageRenderer.Init();
+            CachedImageRenderer.Init();
             CachedImageRenderer.InitImageSourceHandler();
 
             LoadApplication(new App());

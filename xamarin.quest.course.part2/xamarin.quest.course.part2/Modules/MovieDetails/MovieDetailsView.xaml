@@ -5,12 +5,18 @@
     xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
     xmlns:moviedetails="clr-namespace:xamarin.quest.course.part2.Modules.MovieDetails"
     xmlns:local="clr-namespace:xamarin.quest.course.part2.Common.Converters"
+    xmlns:views="http://xamarin.com/schemas/2020/toolkit"
     x:DataType="moviedetails:MovieDetailsViewModel"
     x:Class="xamarin.quest.course.part2.Modules.MovieDetails.MovieDetailsView"
     NavigationPage.HasNavigationBar="False">
     <ContentPage.Resources>
         <ResourceDictionary>
             <local:BoolToFavoriteImageConverter x:Key="boolToFavorite"/>
+            <Style x:Key="primaryLabel" TargetType="Label">
+                <Setter Property="FontAttributes" Value="Bold" />
+                <Setter Property="FontSize" Value="Medium" />
+                <Setter Property="TextColor" Value="#007AFF" />
+            </Style>
         </ResourceDictionary>
     </ContentPage.Resources>
     <ContentPage.Padding>
@@ -56,6 +62,26 @@
                                  Command="{Binding FavoriteCommand}"
                                  Clicked="imageButton_Clicked" />
                 </Grid>
+                <views:Expander>
+                    <views:Expander.Header>
+                        <Label Text="Plot"
+                               Padding="20"
+                               Style="{Binding Source={StaticResource primaryLabel}}" />
+                    </views:Expander.Header>
+                    <Label Text="{Binding MovieInformation.Plot}"
+                           Padding="20, 0, 20, 0"
+                           TextColor="Gray" />
+                </views:Expander>
+                <views:Expander>
+                    <views:Expander.Header>
+                        <Label Text="Cast"
+                               Padding="20, 5, 20, 0"
+                               Style="{Binding Source={StaticResource primaryLabel}}" />
+                    </views:Expander.Header>
+                    <Label Text="{Binding MovieInformation.Actors}"
+                                       Padding="20, 10, 20, 20"
+                                       TextColor="Gray" />
+                </views:Expander>
             </StackLayout>
         </ScrollView>
     </ContentPage.Content>
