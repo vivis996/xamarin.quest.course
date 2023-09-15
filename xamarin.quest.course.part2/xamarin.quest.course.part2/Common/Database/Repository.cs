@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using SQLite;
+using xamarin.quest.course.part2.Common.Extensions;
 
 namespace xamarin.quest.course.part2.Common.Database
 {
@@ -17,7 +18,7 @@ namespace xamarin.quest.course.part2.Common.Database
 
         public Repository()
         {
-            this.InitializeAsync().Wait();
+            this.InitializeAsync().SafeFireAndForget(false);
         }
 
         private async Task InitializeAsync()

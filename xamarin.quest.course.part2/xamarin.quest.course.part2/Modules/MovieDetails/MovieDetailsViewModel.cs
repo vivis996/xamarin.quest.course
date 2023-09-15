@@ -34,13 +34,6 @@ namespace xamarin.quest.course.part2.Modules.MovieDetails
             get => this._movieInformation;
             set => this.SetProperty(ref this._movieInformation, value);
         }
-
-        private bool _isFavorite;
-        public bool IsFavorite
-        {
-            get => this._isFavorite;
-            set => this.SetProperty(ref this._isFavorite, value);
-        }
         #endregion
 
         public MovieDetailsViewModel(INavigationService navigationService,
@@ -57,8 +50,7 @@ namespace xamarin.quest.course.part2.Modules.MovieDetails
 
         private async Task SetMovieFavorite()
         {
-            this.IsFavorite = !this.IsFavorite;
-            this.MovieInformation.IsFavorite = this.IsFavorite;
+            this.MovieInformation.IsFavorite = !this.MovieInformation.IsFavorite;
             await this._movieInformationRepository.SaveAsync(this.MovieInformation);
         }
 
@@ -77,7 +69,6 @@ namespace xamarin.quest.course.part2.Modules.MovieDetails
             if (dbInfo != null)
             {
                 this.MovieInformation = dbInfo;
-                this.IsFavorite = this.MovieInformation.IsFavorite;
             }
         }
     }
