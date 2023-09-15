@@ -1,28 +1,52 @@
-﻿using System.Collections.ObjectModel;
+﻿using System;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Input;
+using xamarin.quest.course.part2.Common.Base;
 using xamarin.quest.course.part2.Common.Models;
 using xamarin.quest.course.part2.Common.Models.Api;
+using xamarin.quest.course.part2.Common.Navigation;
 using xamarin.quest.course.part2.Common.Network;
+using xamarin.quest.course.part2.Modules.MovieDetails;
 using Xamarin.Forms;
 
 namespace xamarin.quest.course.part2.Modules.Main
 {
-    public class MainViewModel : BindableObject
+    public class MainViewModel : BaseViewModel
     {
         private readonly INetworkService _networkService;
+        private readonly INavigationService _navigationService;
 
         public ObservableCollection<MovieData> Items { get; set; }
 
+        private MovieData _selectedMovie;
+        public MovieData SelectedMovie
+        {
+            get => this._selectedMovie;
+            set => this.SetProperty(ref this._selectedMovie, value);
+        }
+
         public string SearchTerm { get; set; }
 
-        public MainViewModel(INetworkService networkService)
+        public MainViewModel(INetworkService networkService,
+                             INavigationService navigationService)
         {
             this._networkService = networkService;
+            this._navigationService = navigationService;
         }
 
         public ICommand PlatformSearchCommand => new Command(async () => await this.GetMovieData());
+        public ICommand MovieChangedCommand => new Command(async () => await this.GoToMovieDetails());
+
+        private async Task GoToMovieDetails()
+        {
+            if (this.SelectedMovie == null)
+                return;
+
+            await this._navigationService.PushAsync<MovieDetailsViewModel>(this.SelectedMovie);
+            this.SelectedMovie = null;
+        }
 
         private async Task GetMovieData()
         {
