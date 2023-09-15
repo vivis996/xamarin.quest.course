@@ -1,7 +1,9 @@
 using System;
+using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using xamarin.quest.course.part2.Common.Base;
+using xamarin.quest.course.part2.Common.Database;
 using xamarin.quest.course.part2.Common.Models;
 using xamarin.quest.course.part2.Common.Models.Api;
 using xamarin.quest.course.part2.Common.Navigation;
@@ -12,8 +14,11 @@ namespace xamarin.quest.course.part2.Modules.MovieDetails
 {
     public class MovieDetailsViewModel : BaseViewModel
     {
+        #region Properties
+
         private readonly INavigationService _navigationService;
         private readonly INetworkService _networkService;
+        private readonly IRepository<FullMovieInformation> _movieInformationRepository;
 
         private MovieData _movieData;
 
@@ -36,20 +41,25 @@ namespace xamarin.quest.course.part2.Modules.MovieDetails
             get => this._isFavorite;
             set => this.SetProperty(ref this._isFavorite, value);
         }
+        #endregion
 
-        public MovieDetailsViewModel(INavigationService navigationService, INetworkService networkService)
+        public MovieDetailsViewModel(INavigationService navigationService,
+                                     INetworkService networkService,
+                                     IRepository<FullMovieInformation> movieInformationRepository)
         {
             this._navigationService = navigationService;
             this._networkService = networkService;
+            this._movieInformationRepository = movieInformationRepository;
         }
 
         public ICommand GoBackCommand => new Command(async () => await this.GoBack());
         public ICommand FavoriteCommand => new Command(async () => await this.SetMovieFavorite());
 
-        private Task SetMovieFavorite()
+        private async Task SetMovieFavorite()
         {
             this.IsFavorite = !this.IsFavorite;
-            return Task.CompletedTask;
+            this.MovieInformation.IsFavorite = this.IsFavorite;
+            await this._movieInformationRepository.SaveAsync(this.MovieInformation);
         }
 
         private async Task GoBack()
@@ -62,6 +72,13 @@ namespace xamarin.quest.course.part2.Modules.MovieDetails
             this.MovieData = parameter as MovieData;
             var uri = ApiConstants.GetMoviesByIdUri(this.MovieData.ImdbID);
             this.MovieInformation = await this._networkService.GetAsync<FullMovieInformation>(uri);
+            var dbInfo = (await this._movieInformationRepository.GetAllAsync())
+                            .FirstOrDefault(x => x.ImdbID == this.MovieInformation.ImdbID);
+            if (dbInfo != null)
+            {
+                this.MovieInformation = dbInfo;
+                this.IsFavorite = this.MovieInformation.IsFavorite;
+            }
         }
     }
 }

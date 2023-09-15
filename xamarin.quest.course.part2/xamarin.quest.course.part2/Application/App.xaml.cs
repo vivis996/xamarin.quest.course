@@ -2,6 +2,8 @@
 using System.Reflection;
 using Autofac;
 using Plugin.SharedTransitions;
+using xamarin.quest.course.part2.Common.Database;
+using xamarin.quest.course.part2.Common.Models.Api;
 using xamarin.quest.course.part2.Common.Navigation;
 using xamarin.quest.course.part2.Modules.Main;
 using Xamarin.Forms;
@@ -21,6 +23,9 @@ namespace xamarin.quest.course.part2.Application
             builder.RegisterAssemblyTypes(dataAccess)
                    .AsImplementedInterfaces()
                    .AsSelf();
+            builder.RegisterType<Repository<FullMovieInformation>>()
+                   .As<IRepository<FullMovieInformation>>();
+
             //register navigation service
             SharedTransitionNavigationPage navigationPage = null;
             Func<INavigation> navigationFunc = () =>

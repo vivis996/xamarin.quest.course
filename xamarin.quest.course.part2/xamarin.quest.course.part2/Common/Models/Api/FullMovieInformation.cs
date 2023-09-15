@@ -1,10 +1,21 @@
 ﻿using System.Collections.Generic;
 using Newtonsoft.Json;
+using SQLite;
+using xamarin.quest.course.part2.Common.Database;
 
 namespace xamarin.quest.course.part2.Common.Models.Api
 {
-    public class FullMovieInformation
+    public class FullMovieInformation : IDataBaseItem
     {
+        // Database Properties
+
+        [PrimaryKey, AutoIncrement]
+        public int Id { get; set; }
+
+        public bool IsFavorite { get; set; }
+
+        // Api Properties
+
         [JsonProperty("Title")]
         public string Title { get; set; }
 
@@ -47,6 +58,7 @@ namespace xamarin.quest.course.part2.Common.Models.Api
         [JsonProperty("Poster")]
         public string Poster { get; set; }
 
+        [Ignore]
         [JsonProperty("Ratings")]
         public List<Rating> Ratings { get; set; }
 
