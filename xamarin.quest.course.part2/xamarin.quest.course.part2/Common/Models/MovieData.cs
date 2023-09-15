@@ -4,12 +4,15 @@
     {
         public string Title { get; set; }
         public string ImageUrl { get; set; }
+        public string Year { get; set; }
+        public string ImdbID { get; set; }
 
-
-        public MovieData(string title, string imageUrl)
+        public MovieData(string title, string imageUrl, string year, string imdbID)
         {
             this.Title = title;
             this.ImageUrl = imageUrl;
+            this.Year = year;
+            this.ImdbID = imdbID;
         }
     }
 }

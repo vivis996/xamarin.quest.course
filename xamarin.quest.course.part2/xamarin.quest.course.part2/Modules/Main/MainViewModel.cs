@@ -60,7 +60,8 @@ namespace xamarin.quest.course.part2.Modules.Main
                                   .Select(x => x.First())
                                   //Sort by year descending
                                   .OrderByDescending(x => x.Year)
-                                  .Select(s => new MovieData(s.Title, s.Poster.Replace("SX300", "SX600")));
+                                  .Select(s => new MovieData(s.Title, s.Poster.Replace("SX300", "SX600"),
+                                                             s.Year, s.ImdbID));
             this.Items = new ObservableCollection<MovieData>(movieData);
             this.OnPropertyChanged(nameof(this.Items));
         }

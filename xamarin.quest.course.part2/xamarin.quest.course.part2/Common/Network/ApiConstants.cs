@@ -8,5 +8,10 @@
 		{
 			return $"https://www.omdbapi.com/?apikey={ApiKey}&s={searchTerm}&page={page}";
         }
+
+        public static string GetMoviesByIdUri(string imdbId)
+        {
+            return $"https://www.omdbapi.com/?apikey={ApiKey}&i={imdbId}&plot=full";
+        }
     }
 }
