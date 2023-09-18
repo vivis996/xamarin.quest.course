@@ -53,14 +53,14 @@
                            Padding="20, 8, 0, 0"
                            TextColor="Gray" />
                     <ImageButton x:Name="imageButton"
-                                 Source="{Binding MovieInformation.IsFavorite, Converter={StaticResource boolToFavorite}}"
+                                 Source="{Binding MovieData.Information.IsFavorite, Converter={StaticResource boolToFavorite}}"
                                  HorizontalOptions="End"
                                  Margin="0, 0, 30, 0"
                                  WidthRequest="50"
                                  HeightRequest="50"
                                  BackgroundColor="White"
                                  Command="{Binding FavoriteCommand}"
-                                 Clicked="imageButton_Clicked" />
+                                 Clicked="ImageButton_Clicked" />
                 </Grid>
                 <views:Expander>
                     <views:Expander.Header>
@@ -83,7 +83,9 @@
                             <ListView.ItemTemplate>
                                 <DataTemplate>
                                     <ViewCell>
-                                        <Label Text="{Binding}" />
+                                        <StackLayout>
+                                            <Label Text="{Binding}" />
+                                        </StackLayout>
                                     </ViewCell>
                                 </DataTemplate>
                             </ListView.ItemTemplate>

@@ -5,11 +5,18 @@
     xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
     xmlns:models="clr-namespace:xamarin.quest.course.part2.Common.Models"
     xmlns:part2="clr-namespace:xamarin.quest.course.part2.Modules.Main"
+    xmlns:local="clr-namespace:xamarin.quest.course.part2.Common.Converters"
     xmlns:sharedTransitions="clr-namespace:Plugin.SharedTransitions;assembly=Plugin.SharedTransitions"
     x:DataType="part2:MainViewModel"
+    x:Name="mainViewPage"
     x:Class="xamarin.quest.course.part2.Modules.Main.Mainview"
     sharedTransitions:SharedTransitionNavigationPage.TransitionSelectedGroup="{Binding SelectedMovieId}"
     NavigationPage.HasNavigationBar="False">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <local:BoolToFavoriteImageConverter x:Key="boolToFavorite"/>
+        </ResourceDictionary>
+    </ContentPage.Resources>
     <ContentPage.Padding>
         <OnPlatform x:TypeArguments="Thickness">
             <On Platform="iOS" Value="0, 60, 0, 0" />
@@ -35,7 +42,8 @@
                                Margin="10, 20, 10, 0"
                                HorizontalOptions="Center"
                                IsClippedToBounds="True">
-                                <Grid>
+                                <StackLayout BackgroundColor="Black"
+                                               Opacity="0.85">
                                     <ffimageloading:CachedImage
                                        LoadingPlaceholder="placeholder.png"
                                        Source="{Binding ImageUrl}"
@@ -43,17 +51,26 @@
                                        HeightRequest="300"
                                        sharedTransitions:Transition.Name="MovieImage"
                                        sharedTransitions:Transition.Group="{Binding ImdbID}" />
-                                    <Label VerticalOptions="End"
-                                       FontSize="38"
-                                       TextColor="White"
-                                       BackgroundColor="Black"
-                                       Opacity="0.85"
-                                       VerticalTextAlignment="Center"
-                                       Padding="15"
-                                       HeightRequest="70"
-                                       LineBreakMode="TailTruncation"
-                                       Text="{Binding Title}" />
-                                </Grid>
+                                    <StackLayout Orientation="Horizontal">
+                                        <Label VerticalOptions="End" x:Name="title"
+                                               FontSize="38"
+                                               TextColor="White"
+                                               BackgroundColor="Black"
+                                               Opacity="0.85"
+                                               VerticalTextAlignment="Center"
+                                               Padding="15"
+                                               HeightRequest="70"
+                                               LineBreakMode="TailTruncation"
+                                               Text="{Binding Title}" />
+                                        <ImageButton
+                                                 Source="{Binding Information.IsFavorite, Converter={StaticResource boolToFavorite}}"
+                                                 HorizontalOptions="End"
+                                                 WidthRequest="50"
+                                                 HeightRequest="50"
+                                                 Command="{Binding Source={x:Reference mainViewPage}, Path=FavoriteCommand}"
+                                                 CommandParameter="{Binding .}" />
+                                    </StackLayout>
+                                </StackLayout>
                             </Frame>
                         </StackLayout>
                     </DataTemplate>

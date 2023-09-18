@@ -27,13 +27,6 @@ namespace xamarin.quest.course.part2.Modules.MovieDetails
             get => this._movieData;
             set => this.SetProperty(ref this._movieData, value);
         }
-
-        private FullMovieInformation _movieInformation;
-        public FullMovieInformation MovieInformation
-        {
-            get => this._movieInformation;
-            set => this.SetProperty(ref this._movieInformation, value);
-        }
         #endregion
 
         public MovieDetailsViewModel(INavigationService navigationService,
@@ -50,8 +43,9 @@ namespace xamarin.quest.course.part2.Modules.MovieDetails
 
         private async Task SetMovieFavorite()
         {
-            this.MovieInformation.IsFavorite = !this.MovieInformation.IsFavorite;
-            await this._movieInformationRepository.SaveAsync(this.MovieInformation);
+            this.MovieData.Information.IsFavorite = !this.MovieData.Information.IsFavorite;
+            await this._movieInformationRepository.SaveAsync(this.MovieData.Information);
+            OnPropertyChanged(nameof(this.MovieData.Information.IsFavorite));
         }
 
         private async Task GoBack()
@@ -62,13 +56,15 @@ namespace xamarin.quest.course.part2.Modules.MovieDetails
         public override async Task InitializeAsync(object parameter)
         {
             this.MovieData = parameter as MovieData;
+            if (this.MovieData.Information?.Id != 0)
+                return;
             var uri = ApiConstants.GetMoviesByIdUri(this.MovieData.ImdbID);
-            this.MovieInformation = await this._networkService.GetAsync<FullMovieInformation>(uri);
+            this.MovieData.Information = await this._networkService.GetAsync<FullMovieInformation>(uri);
             var dbInfo = (await this._movieInformationRepository.GetAllAsync())
-                            .FirstOrDefault(x => x.ImdbID == this.MovieInformation.ImdbID);
+                            .FirstOrDefault(x => x.ImdbID == this.MovieData.Information.ImdbID);
             if (dbInfo != null)
             {
-                this.MovieInformation = dbInfo;
+                this.MovieData.Information = dbInfo;
             }
         }
     }
